@@ -63,8 +63,39 @@ client.on('ready', () => {
             channel.setUserLimit(10)
           })
       })
-    });
 
+    command(client, 'embed', (message) => {
+   
+      const embed = new Discord.MessageEmbed()
+      .setTitle('Example text embed')
+      .setURL('https://www.surreycadets.ca/')
+      .setFooter('This is a footer')
+      .setColor('gold')
+      .addFields(
+        {
+          name: 'Field 1',
+          value: 'Hello world',
+          inline: true,
+        },
+        {
+          name: 'Field 2',
+          value: 'Hello world',
+          inline: true,
+        },
+        {
+          name: 'Field 3',
+          value: 'Hello world',
+          inline: true,
+        },
+        {
+          name: 'Field 4',
+          value: 'Hello world',
+        }
+      )
+
+    message.channel.send(embed)
+    });
+})
     
 
 client.login(config.token);
