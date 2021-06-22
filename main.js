@@ -6,6 +6,7 @@ const client = new Discord.Client();
 const config = require('./config.json');
 const welcome = require('./welcome')
 const memberCount = require('./member-count')
+const mongo = require('./mongo')
 
 client.on('ready', async() => {
   console.log('Client ready!');
@@ -13,6 +14,14 @@ client.on('ready', async() => {
 
   welcome(client, Discord)
   memberCount(client)
+
+  await mongo().then((mongoose) => {
+    try {
+      console.log('Connected to mongo!')
+    } finally {
+      mongoose.connection.close()
+    }
+  })
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
