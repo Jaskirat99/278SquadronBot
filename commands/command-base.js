@@ -1,3 +1,10 @@
+/**
+ * NOTE:
+ *  Some parts of this code have been improved since the original command base video.
+ *  This file should still work as expected, however if you are learning the inner workings of
+ *  this file then expect the file to be slightly different than in the video.
+ */
+
 const { prefix } = require('../config.json')
 
 const validatePermissions = (permissions) => {
@@ -42,12 +49,16 @@ const validatePermissions = (permissions) => {
   }
 }
 
-const allCommands = {}
-
-module.exports = (commandOptions) => {
+module.exports = (client, commandOptions) => {
   let {
     commands,
+    expectedArgs = '',
+    permissionError = 'You do not have permission to run this command.',
+    minArgs = 0,
+    maxArgs = null,
     permissions = [],
+    requiredRoles = [],
+    callback,
   } = commandOptions
 
   // Ensure the command and aliases are in an array
@@ -66,77 +77,63 @@ module.exports = (commandOptions) => {
     validatePermissions(permissions)
   }
 
-  for (const command of commands) {
-    allCommands[command] = {
-      ...commandOptions,
-      commands,
-      permissions,
-    };
-  }
-}
+  // Listen for messages
+  client.on('message', (message) => {
+    const { member, content, guild } = message
 
-module.exports.listen = (client) => {
-    // Listen for messages
-    client.on('message', (message) => {
-      const { member, content, guild } = message
+    for (const alias of commands) {
+      const command = `${prefix}${alias.toLowerCase()}`
 
-       // Split on any number of spaces
-       const arguments = content.split(/[ ]+/)
-  
-       // Remove the command which is the first index
-       const name = arguments.shift().toLowerCase();
-      
-       if (name.startsWith(prefix)) {
-         const command = allCommands[name.replace(prefix, '')]
-         if(!command) {
-           return
-         }
+      if (
+        content.toLowerCase().startsWith(`${command} `) ||
+        content.toLowerCase() === command
+      ) {
+        // A command has been ran
 
-         const {
-           permissions, 
-           permissionError = "You do not have permission to run this command. ",
-           requiredRoles = [],
-           minArgs = 0,
-           maxArgs = null,
-           expectedArgs,
-           callback
-          } = command;
-          // A command has been ran
-  
-          // Ensure the user has the required permissions
-          for (const permission of permissions) {
-            if (!member.hasPermission(permission)) {
-              message.reply(permissionError)
-              return
-            }
+        // Ensure the user has the required permissions
+        for (const permission of permissions) {
+          if (!member.hasPermission(permission)) {
+            message.reply(permissionError)
+            return
           }
-  
-          // Ensure the user has the required roles
-          for (const requiredRole of requiredRoles) {
-            const role = guild.roles.cache.find(
-              (role) => role.name === requiredRole
-            )
-  
-            if (!role || !member.roles.cache.has(role.id)) {
-              message.reply(
-                `You must have the "${requiredRole}" role to use this command.`
-              )
-              return
-            }
-          }
-          // Ensure we have the correct number of arguments
-          if (
-            arguments.length < minArgs ||
-            (maxArgs !== null && arguments.length > maxArgs)
-          ) {
+        }
+
+        // Ensure the user has the required roles
+        for (const requiredRole of requiredRoles) {
+          const role = guild.roles.cache.find(
+            (role) => role.name === requiredRole
+          )
+
+          if (!role || !member.roles.cache.has(role.id)) {
             message.reply(
-              `Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`
+              `You must have the "${requiredRole}" role to use this command.`
             )
-            return;
+            return
           }
-  
-          // Handle the custom command code
-          callback(message, arguments, arguments.join(' '), client)
-       }
-    });
+        }
+
+        // Split on any number of spaces
+        const arguments = content.split(/[ ]+/)
+
+        // Remove the command which is the first index
+        arguments.shift()
+
+        // Ensure we have the correct number of arguments
+        if (
+          arguments.length < minArgs ||
+          (maxArgs !== null && arguments.length > maxArgs)
+        ) {
+          message.reply(
+            `Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`
+          )
+          return
+        }
+
+        // Handle the custom command code
+        callback(message, arguments, arguments.join(' '), client)
+
+        return
+      }
+    }
+  })
 }
