@@ -24,15 +24,13 @@ client.on('ready', async () => {
     .registerGroups([
       ['misc', 'misc commands'],
       ['moderation', 'moderation commands'],
-      ['economy', 'Commands for the economy system'],
-      ['giveaway', 'Commands to manage giveaways'],
       ['games', 'Commands to handle games'],
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
   welcome(client)
-  loadCommands(client)
+  //loadCommands(client)
 
 })
 

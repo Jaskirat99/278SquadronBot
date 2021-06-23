@@ -24,6 +24,7 @@ module.exports = class BotInfoCommand extends Commando.Command {
         `Information about the ${this.client.user.username}`,
         this.client.user.displayAvatarURL()
       )
+      .setColor('#FFD700')
       .addFields(
         {
           name: 'Bot tag',
