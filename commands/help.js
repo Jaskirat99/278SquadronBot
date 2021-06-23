@@ -23,6 +23,7 @@ module.exports = {
              .addField("Serverinfo",'Displays stats of the current server', )
              .addField("Cc / clearchannel",'Clears all messages in a channel (ADMIN ONLY)', )
              .addField("Add / addition",'Adds any two numbers', )
+             .addField(".setwelcome",'Sets the server welcome (ADMIN ONLY)', )
              .addField("Ban",'Bans a specified member', )
              .addField("Kick",'Kicks a specified member', )
              .addField("Help",'Displays this menu ', )  

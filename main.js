@@ -34,14 +34,15 @@ client.on('ready', async() => {
         readCommands(path.join(dir, file))
       } else if (file !== baseFile) {
         const option = require(path.join(__dirname, dir, file))
-        commandBase(client, option)
+        commandBase(option)
       }
     }
   }
 
   readCommands('commands')
 
-})
+  commandBase.listen(client);
+});
     
 
 client.login(config.token);
