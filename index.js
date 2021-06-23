@@ -4,9 +4,11 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 const config = require('./config.json')
-
+const welcome = require('./welcome')
 client.on('ready', async () => {
   console.log('The client is ready!')
+
+  welcome(client, Discord)
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
