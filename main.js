@@ -7,6 +7,7 @@ const config = require('./config.json');
 const welcome = require('./welcome')
 const memberCount = require('./member-count')
 const mongo = require('./mongo')
+const messageCount = require('./message-counter')
 
 client.on('ready', async() => {
   console.log('Client ready!');
@@ -14,6 +15,7 @@ client.on('ready', async() => {
 
   welcome(client, Discord)
   memberCount(client)
+  messageCount(client)
 
   await mongo().then((mongoose) => {
     try {
