@@ -1,5 +1,5 @@
 {
-  "name": "1-Creating-The-Bot",
+  "name": "squadron bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,9 +11,17 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0",
+    "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "fs": "0.0.1-security",
+    "module-alias": "^2.2.2",
     "mongoose": "^5.9.24",
     "path": "^0.12.7",
     "redis": "^3.0.2"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@util": "./util",
+    "@features": "./features/features",
+    "@commands": "./commands/command"
   }
 }
