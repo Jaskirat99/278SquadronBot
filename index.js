@@ -1,15 +1,11 @@
 require('module-alias/register')
 
-//const Discord = require('discord.js')
-//const client = new Discord.Client()
-
 const path = require('path')
 const Commando = require('discord.js-commando')
 
 const config = require('@root/config.json')
 const welcome = require('@features/welcome')
-const loadCommands = require('@root/commands/load-commands')
-const commandBase = require('@root/commands/command-Base')
+
 
 
 const client = new Commando.CommandoClient({
@@ -19,19 +15,19 @@ const client = new Commando.CommandoClient({
 
 client.on('ready', async () => {
   console.log('The client is ready!')
+  client.user.setActivity('Official Squadron Bot')
 
   client.registry
     .registerGroups([
-      ['misc', 'misc commands'],
-      ['moderation', 'moderation commands'],
-      ['games', 'Commands to handle games'],
+      ['misc', 'Miscellaneous Commands'],
+      ['moderation', 'Commands For Moderation'],
+      ['games', 'Commands For Games'],
+      ['testing', 'Commands For Testing Purposes'],
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
-  welcome(client)
-  //loadCommands(client)
-
+  welcome(client) 
 })
 
 client.login(config.token)

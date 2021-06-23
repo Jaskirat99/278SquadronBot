@@ -1,6 +1,6 @@
 const Commando = require('discord.js-commando')
 
-module.exports = class KickCommand extends Commando.Command {
+module.exports = class ClearChannelCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: 'cc',
