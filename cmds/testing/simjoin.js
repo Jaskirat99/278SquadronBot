@@ -11,8 +11,8 @@ module.exports = class SimJoinCommand extends Commando.Command {
       description: 'Simulates a join',
     })
   }
-
-  run = (message) => {
-    this.client.emit('guildMemberAdd', message.member)
-  }
+ 
+  run(message) {
+		return message.reply('Simulating Join! Please wait a moment...');
+	}
 }
