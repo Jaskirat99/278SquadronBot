@@ -9,6 +9,8 @@ Member Count Channel
 
 Customizable Welcome Message
 
+Profanity filter
+
 # Commands:
 
 
