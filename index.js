@@ -1,14 +1,15 @@
+  
 require('module-alias/register')
 
 const path = require('path')
 const Commando = require('discord.js-commando')
-const WOKCommands = require('wokcommands')
 
 const config = require('@root/config.json')
 const welcome = require('@features/welcome')
 const mongo = require('./util/mongo')
-
-
+const counter = require('@features/member-count')
+const filter = require('@features/filter')
+const { Message } = require('discord.js')
 
 const client = new Commando.CommandoClient({
   owner: '763867677256712205',
@@ -39,7 +40,9 @@ client.on('ready', async () => {
     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
   welcome(client) 
-
+  counter(client)
+  filter(client)
 })
+
 
 client.login(config.token)
