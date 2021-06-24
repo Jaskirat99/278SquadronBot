@@ -2,6 +2,7 @@ require('module-alias/register')
 
 const path = require('path')
 const Commando = require('discord.js-commando')
+const WOKCommands = require('wokcommands')
 
 const config = require('@root/config.json')
 const welcome = require('@features/welcome')
@@ -32,11 +33,13 @@ client.on('ready', async () => {
       ['moderation', 'Commands For Moderation'],
       ['games', 'Commands For Games'],
       ['testing', 'Commands For Testing Purposes'],
+      ['setup', 'Commands For Setting Up The Bot In Your Server'],
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
   welcome(client) 
+
 })
 
 client.login(config.token)

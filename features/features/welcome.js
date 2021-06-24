@@ -1,6 +1,7 @@
 const mongo = require('@util/mongo')
 const command = require('@util/command')
 const welcomeSchema = require('@schemas/welcome-schema')
+const { MessageEmbed } = require('discord.js')
 
 module.exports = (client) => {
   //!setwelcome <message>
@@ -72,7 +73,16 @@ module.exports = (client) => {
     const text = data[1]
 
     const channel = guild.channels.cache.get(channelId)
-    channel.send(text.replace(/<@>/g, `<@${member.id}>`))
+    const icon = guild.iconURL()
+    const embed = new MessageEmbed()
+      .setTitle(`278 Cormorant Squadron`,)
+      .setTimestamp()
+      .setThumbnail(icon)
+      .setFooter('278 Cormorant Squadron')
+      .setURL('https://www.surreycadets.ca/')
+      .setColor('#FFD700')
+      .setDescription(`${text.replace(/<@>/g, `<@${member.id}>`)}`)
+    channel.send(embed)
   }
 
   command(client, 'simjoin', (message) => {

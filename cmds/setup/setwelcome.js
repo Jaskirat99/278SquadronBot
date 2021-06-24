@@ -1,18 +1,18 @@
-  
+
 const Commando = require('discord.js-commando')
 
 module.exports = class SimJoinCommand extends Commando.Command {
   constructor(client) {
     super(client, {
-      name: 'simjoin',
-      group: 'testing',
-      memberName: 'simjoin',
+      name: 'setwelcome',
+      group: 'setup',
+      memberName: 'setwelcome',
       userPermissions: ['ADMINISTRATOR'],
-      description: 'Simulates a join',
+      description: 'Sets the welcome channel and message for the server',
     })
   }
  
   run(message) {
-		return message.reply('Simulating Join! Please wait a moment...    ');
+		return message.reply('Welcome message has been set ');
 	}
 }
