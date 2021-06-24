@@ -14,7 +14,7 @@
     "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "fs": "0.0.1-security",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.9.24",
+    "mongoose": "^5.12.14",
     "path": "^0.12.7",
     "redis": "^3.0.2",
     "wokcommands": "^1.3.6"

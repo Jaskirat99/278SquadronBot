@@ -5,6 +5,7 @@ const Commando = require('discord.js-commando')
 
 const config = require('@root/config.json')
 const welcome = require('@features/welcome')
+const mongo = require('./util/mongo')
 
 
 
@@ -16,6 +17,14 @@ const client = new Commando.CommandoClient({
 client.on('ready', async () => {
   console.log('The client is ready!')
   client.user.setActivity('Official Squadron Bot')
+
+  await mongo().then((mongoose) => {
+    try {
+      console.log('Connected to mongo!')
+    } finally {
+      mongoose.connection.close()
+    }
+  })
 
   client.registry
     .registerGroups([
