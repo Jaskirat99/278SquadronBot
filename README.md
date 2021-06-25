@@ -11,6 +11,8 @@ Customizable Welcome Message
 
 Profanity filter
 
+RSS Reader (Website Posts)
+
 # Commands:
 
 

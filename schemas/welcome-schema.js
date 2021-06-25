@@ -12,3 +12,4 @@ const welcomeSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model('welcome-channels', welcomeSchema)
+
