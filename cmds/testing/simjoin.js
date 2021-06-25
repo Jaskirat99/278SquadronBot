@@ -13,6 +13,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
   }
  
   run(message) {
+    console.log('Running Sim Join Command!')
 		return message.reply('Simulating Join! Please wait a moment...    ');
 	}
 }

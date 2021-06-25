@@ -13,6 +13,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
   }
  
   run(message) {
+    console.log('Running Set Welcome Command!')
 		return message.reply('Welcome message has been set ');
 	}
 }

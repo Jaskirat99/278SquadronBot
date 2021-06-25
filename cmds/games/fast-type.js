@@ -145,6 +145,7 @@ module.exports = class FastTypeGame extends Commando.Command {
 
   async run(message) {
     const { channel } = message
+    console.log('Running Fast Type Command!')
 
     message.delete()
     channel.send('Preparing game...').then((message) => {

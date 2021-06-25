@@ -13,6 +13,8 @@ module.exports = class ServerInfoCommand extends Commando.Command {
     })
   }
   async run(message) {
+    console.log('Running Server Info Command!')
+
     const { guild } = message
     const { name, region, memberCount, owner, afkTimeout } = guild
     const icon = guild.iconURL()

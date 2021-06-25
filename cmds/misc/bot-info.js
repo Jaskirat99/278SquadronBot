@@ -15,6 +15,9 @@ module.exports = class BotInfoCommand extends Commando.Command {
   run = async (message) => {
     let totalMembers = 0
 
+    console.log('Running Bot Info Command!')
+
+
     for (const guild of this.client.guilds.cache) {
       totalMembers += (await guild[1].members.fetch()).size
     }

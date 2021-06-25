@@ -15,6 +15,8 @@ module.exports = class BanCommand extends Commando.Command {
   }
 
   async run(message, text) {
+    console.log('Running Embed Command!')
+
   // Send Message In Channel You Want To 
   const channel = message.mentions.channels.first()
   if(!channel) return message.reply('Provide A Channel To Send Embed') // If No Channel Is Provided

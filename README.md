@@ -13,6 +13,8 @@ Profanity filter
 
 RSS Reader (Website Posts)
 
+Custom Onboarding system
+
 # Commands:
 
 

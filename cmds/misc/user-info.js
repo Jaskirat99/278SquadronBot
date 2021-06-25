@@ -12,15 +12,17 @@ module.exports = class UserInfoCommand extends Commando.Command {
   }
 
   run = async (message) => {
+    console.log('Running User Info Command!')
+
     const { guild, channel } = message
 
     const user = message.mentions.users.first() || message.member.user
     const member = guild.members.cache.get(user.id)
 
-    console.log(member)
 
     const embed = new MessageEmbed()
       .setAuthor(`User info for ${user.username}`, user.displayAvatarURL())
+      .setColor('#FFD700')
       .addFields(
         {
           name: 'User tag',

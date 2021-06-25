@@ -12,6 +12,8 @@ module.exports = class ClearChannelCommand extends Commando.Command {
     })
   }
   async run(message) {
+    console.log('Running ClearChannel Command!')
+
     message.channel.messages.fetch().then((results) =>{
         message.channel.bulkDelete(results)
     })

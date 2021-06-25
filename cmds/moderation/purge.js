@@ -13,6 +13,8 @@ module.exports = class KickCommand extends Commando.Command {
   }
 
   async run(message, args) {
+    console.log('Running Purge Command!')
+
       if(!args[0]) return message.reply("Please enter the amount of messages that you want to purge!")
       if(isNaN(args[0])) return message.reply("Please enter a real number!")
 

@@ -5,13 +5,15 @@ module.exports = class SimJoinCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: 'verify',
-      group: 'testing',
+      group: 'setup',
       memberName: 'verify',
       description: 'Simulates a join',
     })
   }
  
   async run(message) {
+    console.log('Running Verify Command!')
+
     const questions = [
         'Hello, are you an Officer or Cadet?',
         'Perfect! Before you can gain access to the rest of the server we must set up your server nickname to meet the squadron standard. Please type "understood" to acknowledge',

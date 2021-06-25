@@ -14,6 +14,8 @@ module.exports = class NicknameCommand extends Commando.Command {
   }
 
   run = (message, args) => {
+    console.log('Running Nickname Command!')
+
     const target = message.mentions.users.first()
     const member = message.guild.members.cache.get(target.id)
 

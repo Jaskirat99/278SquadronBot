@@ -13,6 +13,7 @@ module.exports = class SimLeaveCommand extends Commando.Command {
   }
 
   run = (message) => {
+    console.log('Running Sim Leave Command!')
     this.client.emit('guildMemberLeave', message.member)
   }
 }
