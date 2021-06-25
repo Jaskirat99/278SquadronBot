@@ -9,7 +9,6 @@ const welcome = require('@features/welcome')
 const mongo = require('./util/mongo')
 const counter = require('@features/member-count')
 const filter = require('@features/filter')
-const { Message } = require('discord.js')
 
 const client = new Commando.CommandoClient({
   owner: '763867677256712205',
