@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js')
 const DiscordJS = require('discord.js')
 const Commando = require('discord.js-commando')
 
@@ -16,10 +17,10 @@ module.exports = class SimJoinCommand extends Commando.Command {
 
     const questions = [
         'Hello, are you an Officer or Cadet?',
-        'Perfect! Before you can gain access to the rest of the server we must set up your server nickname to meet the squadron standard. Please type "understood" to acknowledge',
-        'Great! Firstly a quick tour of the server. \n The Squadron Website Posts channel posts updates directly from cadet related social media platforms (Facebook, Website etc)\n Please type "next" to move forward',
-        'Next, The Squadron Annoucements channel  is where all important annoucements regarding the squadron are made\n Please type "next" to move forward',
-        'Next, The Team Channel Access Channel is where you can gain access to flight and team rooms\n Please type "next" to move forward',
+        'Perfect! Before you can gain access to the rest of the server you must agree to the rules. \n\n**Rules**\n1. All normal cadet and squadron rules apply.\n2. No profanity, or otherwise explicit language.\n3. To be continued... \n\nPlease type "understood" to acknowledge',
+        'Great! Firstly a quick tour of the server. \n\n The Squadron Website Posts channel posts updates directly from cadet related social media platforms (Facebook, Website etc)\n\nPlease type "next" to move forward',
+        'Next, The Squadron Annoucements channel  is where all important annoucements regarding the squadron are made\n\nPlease type "next" to move forward',
+        'Next, The Team Channel Access Channel is where you can gain access to flight and team rooms\n\nPlease type "next" to move forward',
         'Lastly, Please enter your name in the following format (Rank, Last Name, First Initial. Ex. WO2 Gill, J) ',
 
       ]
@@ -33,11 +34,26 @@ module.exports = class SimJoinCommand extends Commando.Command {
         max: questions.length,
         time: 1000 * 300, // 15s
       })
-  
-      message.channel.send(questions[counter++])
+      const embed = new MessageEmbed()
+      .setTitle('278 Cormorant Squadron')
+      .setColor('#FFD700')
+      .setURL('https://www.surreycadets.ca/')
+      .setTimestamp()
+      .setFooter('278 Cormorant Squadron')
+      .setDescription(`${questions[counter++]}`)
+
+      message.channel.send(embed)
+
       collector.on('collect', (m) => {
         if (counter < questions.length) {
-          m.channel.send(questions[counter++])
+          const embed = new MessageEmbed()
+          .setTitle('278 Cormorant Squadron')
+          .setColor('#FFD700')
+          .setURL('https://www.surreycadets.ca/')
+          .setTimestamp()
+          .setFooter('278 Cormorant Squadron')
+          .setDescription(`${questions[counter++]}`)
+          m.channel.send(embed)
         }
       })
   
@@ -49,12 +65,25 @@ module.exports = class SimJoinCommand extends Commando.Command {
           return
         }
   
-        let counter = 0
         collected.forEach((value) => {
-        console.log(questions[counter++], value.content)
           message.member.setNickname(value.content)
         })
-        message.reply('Perfect! Your name has been set, and you have been given access to the rest of the squadron discord!')
+
+        const roleName = 'verified'
+        const { guild } = message
+        const role = guild.roles.cache.find((role) => role.name === roleName)
+        const member = guild.members.cache.find((member) => member.id === message.author.id)
+
+    message.member.roles.add(role)
+
+       const embed2 = new MessageEmbed()
+      .setTitle('278 Cormorant Squadron')
+      .setColor('#FFD700')
+      .setURL('https://www.surreycadets.ca/')
+      .setTimestamp()
+      .setFooter('278 Cormorant Squadron')
+      .setDescription('Perfect! Your name has been set, and you have been given access to the rest of the squadron discord!')
+        message.reply(embed2)
       })
   
     //   const yes = ['cadet', 'y']
