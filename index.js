@@ -9,7 +9,6 @@ const mongo = require('./util/mongo')
 const counter = require('@features/member-count')
 const filter = require('@features/filter')
 
-
 const client = new Commando.CommandoClient({
   owner: '763867677256712205',
   commandPrefix: config.prefix,
@@ -18,7 +17,7 @@ const client = new Commando.CommandoClient({
 client.on('ready', async () => {
   console.log('The client is ready!')
   client.user.setActivity('Official Squadron Bot')
-  
+
 
   await mongo().then((mongoose) => {
     try {

@@ -36,4 +36,5 @@ purge - purges specified messages
 
 clearchannel - clears a channel of messages
 
-# Use ```.help``` for full list of features and commands and how to use
+# Prefix is ```.``` for stable release Use ```.help``` for full list of features and commands and how to use
+# Note if using Dev Bot prefix is ```,```
