@@ -1,7 +1,7 @@
 const mongo = require('@util/mongo')
 const command = require('@util/command')
 const welcomeSchema = require('@schemas/welcome-schema')
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, DiscordAPIError } = require('discord.js')
 
 module.exports = (client) => {
   //!setwelcome <message>
@@ -72,6 +72,8 @@ module.exports = (client) => {
     const channelId = data[0]
     const text = data[1]
 
+
+
     const channel = guild.channels.cache.get(channelId)
     const icon = guild.iconURL()
     const embed = new MessageEmbed()
@@ -83,7 +85,7 @@ module.exports = (client) => {
       .setColor('#FFD700')
       .setDescription(`${text.replace(/<@>/g, `<@${member.id}>`)}`)
     channel.send(embed)
-  }
+   }
 
   command(client, 'simjoin', (message) => {
     onJoin(message.member)

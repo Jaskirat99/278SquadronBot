@@ -8,7 +8,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
       name: 'verify',
       group: 'setup',
       memberName: 'verify',
-      description: 'Simulates a join',
+      description: 'Runs the verification process',
     })
   }
  
@@ -37,6 +37,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
       const embed = new MessageEmbed()
       .setTitle('278 Cormorant Squadron')
       .setColor('#FFD700')
+      .setThumbnail('https://upload.wikimedia.org/wikipedia/en/6/65/RCACS_Crest.png')
       .setURL('https://www.surreycadets.ca/')
       .setTimestamp()
       .setFooter('278 Cormorant Squadron')
@@ -49,6 +50,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
           const embed = new MessageEmbed()
           .setTitle('278 Cormorant Squadron')
           .setColor('#FFD700')
+          .setThumbnail('https://upload.wikimedia.org/wikipedia/en/6/65/RCACS_Crest.png')
           .setURL('https://www.surreycadets.ca/')
           .setTimestamp()
           .setFooter('278 Cormorant Squadron')
@@ -66,9 +68,8 @@ module.exports = class SimJoinCommand extends Commando.Command {
         }
   
         collected.forEach((value) => {
-          message.member.setNickname(value.content)
+          message.member.setNickname(value.content)        
         })
-
         const roleName = 'verified'
         const { guild } = message
         const role = guild.roles.cache.find((role) => role.name === roleName)
@@ -79,6 +80,7 @@ module.exports = class SimJoinCommand extends Commando.Command {
        const embed2 = new MessageEmbed()
       .setTitle('278 Cormorant Squadron')
       .setColor('#FFD700')
+      .setThumbnail('https://upload.wikimedia.org/wikipedia/en/6/65/RCACS_Crest.png')
       .setURL('https://www.surreycadets.ca/')
       .setTimestamp()
       .setFooter('278 Cormorant Squadron')
