@@ -4,16 +4,14 @@ const path = require('path')
 const Commando = require('discord.js-commando')
 
 const config = require('@root/config.json')
-const welcome = require('@features/welcome')
 const mongo = require('./util/mongo')
-const counter = require('@features/member-count')
-const filter = require('@features/filter')
+const loadfeatures = require('./features/load-features')
 
 const client = new Commando.CommandoClient({
   owner: '763867677256712205',
   commandPrefix: config.prefix,
 })
-
+   
 client.on('ready', async () => {
   console.log('The client is ready!')
   client.user.setActivity('Official Squadron Bot')
@@ -38,9 +36,9 @@ client.on('ready', async () => {
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
-  welcome(client) 
-  counter(client)
-  filter(client)
+
+  loadfeatures(client)
+
 });
 
 client.on('error', console.error);
