@@ -11,6 +11,9 @@ Customizable Welcome Message
 
 Profanity filter
 
+![Image]
+(https://github.com/Jaskirat99/278SquadronBot/blob/main/images/Capture.PNG)
+
 RSS Reader (Website Posts)
 
 Custom Onboarding system
