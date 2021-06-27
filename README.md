@@ -9,13 +9,22 @@ Member Count Channel
 
 Customizable Welcome Message
 
+![2.png](https://github.com/Jaskirat99/278SquadronBot/blob/main/images/2.PNG)
+
+
 Profanity filter
 
+![Capture.png](https://github.com/Jaskirat99/278SquadronBot/blob/main/images/Capture.PNG)
 
 
 RSS Reader (Website Posts)
 
 Custom Onboarding system
+
+Delete and Edit Logs
+
+![delete.png](https://github.com/Jaskirat99/278SquadronBot/blob/main/images/delete.PNG)
+![Capture.png](https://github.com/Jaskirat99/278SquadronBot/blob/main/images/edit.PNG)
 
 # Commands:
 
