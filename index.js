@@ -8,6 +8,7 @@ const mongo = require('./util/mongo')
 const loadfeatures = require('./features/load-features')
 
 const client = new Commando.CommandoClient({
+  partials: ['MESSAGE'],
   owner: '763867677256712205',
   commandPrefix: config.prefix,
 })
