@@ -12,7 +12,7 @@ const client = new Commando.CommandoClient({
   owner: '763867677256712205',
   commandPrefix: config.prefix,
 })
-   
+
 client.on('ready', async () => {
   console.log('The client is ready!')
   client.user.setActivity('Official Squadron Bot')

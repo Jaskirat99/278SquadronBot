@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "canvacord": "^5.2.1",
     "canvas": "^2.8.0",
     "commando-provider-mongo": "^2.1.0",
